@@ -1,0 +1,15 @@
+from django.contrib import admin
+from qons.models import Qon, Quest
+
+class QuestInline(admin.TabularInline):
+    model = Quest
+    extra = 3
+
+class QonAdmin(admin.ModelAdmin):
+    fields = ['pub_date', 'name']
+    inlines = [QuestInline]
+
+class QonAdmin(admin.ModelAdmin):
+	pass
+
+admin.site.register(Qon, QonAdmin)

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<h1>{{ qon.name }}</h1>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form action="{% url 'qons:vote' qon.id %}" method="post">
+{% csrf_token %}
+{% for quest in qon.quest_set.all %}
+    {{ quest.id }}.
+    <label for="quest{{ forloop.counter }}">{{ quest.question }}</label><br>
+    <textarea rows="3" cols="60" name="quest-{{quest.id}}" id="quest{{ forloop.counter }}" value="{{ quest.id }}"></textarea><br><br><br><br>
+{% endfor %}
+<input type="submit" value="Submit answers">
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="Home/bower_components/boostrap/dist/js/bootstrap.min.js"></script>
+</form>

@@ -1,0 +1,23 @@
+from django.db import models
+from django.forms import ModelForm
+from django import forms
+from django.contrib.auth.models import User
+
+class Qon(models.Model):
+    name = models.CharField(max_length=100)
+    pub_date = models.DateTimeField('date published')
+    def __unicode__(self):
+        return self.name
+
+class Quest(models.Model):
+	father = models.ForeignKey(Qon)
+	question = models.CharField(max_length=100)
+	def __unicode__(self):
+		return self.question
+		return self.answer
+
+class Answer(models.Model):
+    qs = models.ForeignKey(Quest)
+    answer = models.TextField()
+    def __unicode__(self):
+        return self.answer

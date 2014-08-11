@@ -1,0 +1,8 @@
+<h1>{{ qon.name }}</h1>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="Home/bower_components/boostrap/dist/js/bootstrap.min.js"></script>
+{% for quest in qon.quest_set.all %}
+    {{quest.id}}. {{ quest.question }} <br> ---> {{quest.answer_set.last}}<br><br>
+{% endfor %}
+
